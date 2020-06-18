@@ -9,7 +9,7 @@ public class HuntingGame {
 
     void startHunting(){
        // printGameRules();
-        setStatsEnemy(); //setting up the HP, damagelevel and name of the first enemy
+        setupEnemy(); //setting up the HP, damagelevel and name of the first enemy
         while (true){
             setStatsPlayer(); //setting up the HP and damagelevel of the player, changes each iteration
             printOptionsPlayer();
@@ -17,7 +17,7 @@ public class HuntingGame {
             if(playerInput.equals("1")){
                 attackEnemy();
                 if(enemy.getHP() < 0){
-                   setStatsEnemy();
+                   setupEnemy();
                 }
             }
             if(playerInput.equals("2")){
@@ -55,7 +55,7 @@ public class HuntingGame {
         System.out.println("        [3]: take potion");
     }
 
-    private void setStatsEnemy(){ //de random stats genereren
+    private void setupEnemy(){ //de random stats genereren
         enemy.setAttackDamage();
         enemy.setHP();
         enemy.setName();
@@ -74,7 +74,7 @@ public class HuntingGame {
         System.out.println("           just a bit more...    ");
         System.out.println("                ...              ");
         System.out.println("...unfortunately, there is a new Enemy around the corner!");
-        setStatsEnemy();
+        setupEnemy();
     }
 
     private void setStatsPlayer(){ //
