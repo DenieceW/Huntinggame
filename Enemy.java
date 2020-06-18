@@ -8,10 +8,6 @@ public class Enemy {
     int attackDamage;
     String name;
 
-    Enemy(){
-
-    }
-
     String setName(){ //random een vijand creeren d.m.v een naam geven met behulp van een random nummer.
          int number = random.nextInt(3) + 1;
          if(number == 1){

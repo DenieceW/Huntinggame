@@ -12,7 +12,7 @@ public class HuntingGame {
         setStatsEnemy(); //setting up the HP, damagelevel and name of the first enemy
         while (true){
             setStatsPlayer(); //setting up the HP and damagelevel of the player, changes each iteration
-            optionsPlayer();
+            printOptionsPlayer();
             String playerInput = scanner.nextLine();
             if(playerInput.equals("1")){
                 attackEnemy();
@@ -20,15 +20,18 @@ public class HuntingGame {
                    setStatsEnemy();
                 }
             }
+            if(playerInput.equals("2")){
+                flee();
+            }
             if(playerInput.equals("3")){
                 takePotion();
             }
             if(playerInput.equals("q")){
                 break;
             }
-            player.resetDamageForce();
-            player.resetPotion();
-            //resetting the damagelevel of the player to 0, so that the damage per attack differs each time the player attacks.
+            player.resetDamageForce();//resetting the damagelevel  of the player to 0, so that the damage per attack differs each time the player attacks.
+            player.resetPotion();//resetting the potion to 0, so each potion differs after each iteration.
+
         }
     }
 
@@ -46,7 +49,7 @@ public class HuntingGame {
         System.out.println("**************************************************************************");
     }
 
-    private void optionsPlayer(){
+    private void printOptionsPlayer(){
         System.out.println("        [1]: attack");
         System.out.println("        [2]: run away");
         System.out.println("        [3]: take potion");
@@ -59,6 +62,19 @@ public class HuntingGame {
         System.out.println(" ");
         System.out.println("Time for a new Enemy to defeat!");
         System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
+        System.out.println("******" + enemy + "******");
+    }
+
+    private void flee(){
+        System.out.println("      You have chosen to flee... ");
+        System.out.println("              run...             ");
+        System.out.println("           run faster!           ");
+        System.out.println("   the " + enemy.getName() + " is still chasing you!");
+        System.out.println("          you are almost save... ");
+        System.out.println("           just a bit more...    ");
+        System.out.println("                ...              ");
+        System.out.println("...unfortunately, there is a new Enemy around the corner!");
+        setStatsEnemy();
     }
 
     private void setStatsPlayer(){ //
@@ -67,7 +83,6 @@ public class HuntingGame {
 
     private void attackEnemy(){
         System.out.println("++++++" + player + "+++++");
-        System.out.println("******" + enemy + "******");
         System.out.println("");
         System.out.println("You have attacked the " + enemy.getName() + "!");
         System.out.println("");
