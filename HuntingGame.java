@@ -26,7 +26,11 @@ public class HuntingGame {
             if(playerInput.equals("3")){
                 takePotion();
             }
+            if(playerInput.equals("x")){
+                System.out.println(player);
+            }
             if(playerInput.equals("q")){
+                System.out.println("Thank you for playing, Goodbye:-)");
                 break;
             }
             player.resetDamageForce();//resetting the damagelevel  of the player to 0, so that the damage per attack differs each time the player attacks.
@@ -53,6 +57,8 @@ public class HuntingGame {
         System.out.println("        [1]: attack");
         System.out.println("        [2]: run away");
         System.out.println("        [3]: take potion");
+        System.out.println("        [x]: check your stats");
+        System.out.println("        [q]: quit");
     }
 
     private void setupEnemy(){ //de random stats genereren
