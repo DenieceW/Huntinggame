@@ -6,10 +6,23 @@ public class Player {
     private Random random = new Random();
     int HP = 100;
     int damage;
+    int coins;
     private int potion;
 
 
     Player(){
+    }
+
+    int setCoins(){
+        return this.coins = random.nextInt(1) + 14;
+    }
+
+    int decreaseCoins(){
+        return this.coins-=2;
+    }
+
+    int getCoins(){
+        return this.coins;
     }
 
     int getHP(){ //check status van health van speler
@@ -45,6 +58,7 @@ public class Player {
         if(this.HP <= 0){
             return "You dead";
         }else
-        return "Your current HP is " + this.HP + " and your damagelevel is " + this.damage;
+        return "Your current HP is " + this.HP + " and your damagelevel is " + this.damage +
+                ". You have " + this.coins + " amount of coins.";
     }
 }

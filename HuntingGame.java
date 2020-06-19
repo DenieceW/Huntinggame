@@ -6,18 +6,17 @@ public class HuntingGame {
     Scanner scanner = new Scanner(System.in);
     Player player = new Player();
     Enemy enemy = new Enemy();
+    int maxPotions = 0;
     //to do:
-    //wanneer setupenemy = merchant, krijg dan optie om een potion te kopen voor extra health, kost 2 goudstukken)
     //wanneer setupenemy = banker, krijg dan 3 goudstukken als bonus.
-    //speler heeft bij start maar 3 potions, moet afnemen wanneer speler een potion inneemt.
-    //speler heeft goudstukken 10
-   
+
+
 
     void startHunting(){
         printGameRules();
         setupEnemy(); //setting up the HP, damagelevel and name of the first enemy
         while (true){
-            setStatsPlayer(); //setting up the HP and damagelevel of the player, changes each iteration in the while loop
+            setStatsPlayer(); //setting up the HP and damagelevel of the player, the damagelevel changes each iteration in the while loop
             printOptionsPlayer();
             String playerInput = scanner.nextLine();
             if(playerInput.equals("1")){
@@ -29,16 +28,19 @@ public class HuntingGame {
                 if(player.getHP() <=0){ //if player's HP is less or equal to 0, game over
                     break;
                 }
-
             }
             if(playerInput.equals("2")){
                 flee();
             }
             if(playerInput.equals("3")){
+                if(maxPotions >= 3){
+                    System.out.println("You're all out of potions, you have to wait for a Merchant to stop by!");
+                }else
                 takePotion();
             }
             if(playerInput.equals("x")){
-                System.out.println(player);
+                System.out.println("Your current HP is " + player.HP + " and your damagelevel is " + player.getDamage() +
+                 ". You have " + player.getCoins() + " coins left");
             }
             if(playerInput.equals("q")){
                 System.out.println("Thank you for playing, Goodbye:-)");
@@ -46,7 +48,6 @@ public class HuntingGame {
             }
             player.resetDamageForce();//resetting the damagelevel  of the player to 0, so that the damage per attack differs each time the player attacks.
             player.resetPotion();//resetting the potion to 0, so each potion differs after each iteration.
-
         }
     }
 
@@ -59,7 +60,8 @@ public class HuntingGame {
         System.out.println("When you confront the enemy, you have three choices:");
         System.out.println("[1] You can choose to attack");
         System.out.println("[2] You can choose to run");
-        System.out.println("[3] You can choose to take a potion, if needed and then attack");
+        System.out.println("[3] You can choose to take a potion, but beware, you only get 3");
+        System.out.println("You may encounter a Merchant, they will give you a potion for 2 coins");
         System.out.println("Good luck and may the Gods be in your favour, Let the Hunting Games begin!");
         System.out.println("**************************************************************************");
     }
@@ -82,7 +84,8 @@ public class HuntingGame {
                 System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
                 System.out.println("******" + enemy + "******");
             }else
-        System.out.println("You have encountered a Merchant. You can buy a potion for 2 coins");
+                buyPotion();
+
     }
 
     private void flee(){
@@ -99,6 +102,7 @@ public class HuntingGame {
 
     private void setStatsPlayer(){ //
         player.setDamageForce();
+        player.setCoins();
     }
 
     private void attackEnemy(){
@@ -122,5 +126,13 @@ public class HuntingGame {
     private void takePotion(){
         System.out.println("You took a potion of " + player.potionHP() + " HP.");
         System.out.println("Your health is now " + player.getHP());
+        maxPotions++;
+    }
+
+    private void buyPotion(){
+        System.out.println("You have encountered a Merchant. You can buy a potion for 2 coins");
+        player.decreaseCoins();
+        System.out.println("You bought a potion of " + player.potionHP() + " HP.");
+        System.out.println("Your health is now " + player.getHP() +" and you have " + player.getCoins() + " coins left" );
     }
 }
