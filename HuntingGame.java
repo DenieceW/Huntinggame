@@ -7,12 +7,7 @@ public class HuntingGame {
     Player player = new Player();
     Enemy enemy = new Enemy();
     int maxPotions = 0;
-    //to do:
-    //wanneer setupenemy = banker, krijg dan 3 goudstukken als bonus.
-    //probleem met coins bijhouden oplossen.
-
-
-
+    
     void startHunting(){
         printGameRules();
         setupEnemy(); //setting up the HP, damagelevel and name of the first enemy
@@ -25,7 +20,7 @@ public class HuntingGame {
                 if(enemy.getHP() < 0){ //if enemy's HP is less or equal to 0, a new enemy will appear
                     setupEnemy();
                 }else
-                attackPlayer();
+                    attackPlayer();
                 if(player.getHP() <=0){ //if player's HP is less or equal to 0, game over
                     break;
                 }
@@ -37,14 +32,14 @@ public class HuntingGame {
                 if(maxPotions >= 3){
                     System.out.println("You're all out of potions, you have to wait for a Healer to stop by or buy a potion from a Merchant!");
                 }else
-                takePotion();
+                    takePotion();
             }
             if(playerInput.equals("4")){
                 buyPotion();
             }
             if(playerInput.equals("x")){
                 System.out.println("Your current HP is " + player.HP + " and your damagelevel is " + player.getDamage() +
-                 ". You have " + player.getCoins() + " coins left");
+                        ". You have " + player.getCoins() + " coins left");
             }
             if(playerInput.equals("q")){
                 System.out.println("Thank you for playing, Goodbye:-)");
@@ -85,12 +80,12 @@ public class HuntingGame {
         enemy.setHP();
         enemy.setName();
         System.out.println(" ");
-            if(!enemy.name.equals("Healer")){
-                System.out.println("Time for a new Enemy to defeat!");
-                System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
-                System.out.println("******" + enemy + "******");
-            }else
-                getPotion();
+        if(!enemy.name.equals("Healer")){
+            System.out.println("Time for a new Enemy to defeat!");
+            System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
+            System.out.println("******" + enemy + "******");
+        }else
+            getPotion();
 
     }
 
@@ -139,8 +134,7 @@ public class HuntingGame {
             System.out.println("You dont have enough coins!");
         }else if (player.getCoins() > 0) {
             player.decreaseCoins(2); //amount of coins decreases by 2;
-            System.out.println("You have encountered a Merchant and bought a potion for 2 coins");
-            System.out.println("You bought a potion of " + player.potionHP() + " HP.");
+            System.out.println("You have encountered a Merchant and bought a potion for 2 coins of " + player.potionHP() + " HP.");
             System.out.println("Your health is now " + player.getHP() + " and you have " + player.getCoins() + " coins left");
         }
     }

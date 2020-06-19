@@ -13,10 +13,6 @@ public class Player {
     Player(){
     }
 
-    int setCoins(){
-        return this.coins = random.nextInt(1) + 14;
-    }
-
     int decreaseCoins(int coins){
         return this.coins-=coins;
     }
@@ -37,15 +33,15 @@ public class Player {
     }
 
     int setDamageForce() { //
-      return this.damage += random.nextInt(10) + 40; //the players damage to an enemy's HP is always between 10 and 40;
+        return this.damage += random.nextInt(10) + 40; //the players damage to an enemy's HP is always between 10 and 40;
     }
 
     int resetDamageForce(){
-       return this.damage = 0;
+        return this.damage = 0;
     }
 
     int getDamage(){
-       return this.damage;
+        return this.damage;
     }
 
     void decreaseHP(int number){
@@ -58,7 +54,7 @@ public class Player {
         if(this.HP <= 0){
             return "You dead";
         }else
-        return "Your current HP is " + this.HP + " and your damagelevel is " + this.damage +
-                ". You have " + this.coins + " amount of coins.";
+            return "Your current HP is " + this.HP + " and your damagelevel is " + this.damage +
+                    ". You have " + this.coins + " amount of coins.";
     }
 }
