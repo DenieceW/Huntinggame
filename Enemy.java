@@ -17,7 +17,7 @@ public class Enemy {
          }else if(number == 3){
              return this.name = "Dragon";
          }else if(number == 4){
-             return this.name = "Merchant";
+             return this.name = "Healer";
          }else
              return this.name = "Hunter";
     }

@@ -6,7 +6,7 @@ public class Player {
     private Random random = new Random();
     int HP = 100;
     int damage;
-    int coins;
+    int coins = 10;
     private int potion;
 
 
@@ -17,8 +17,8 @@ public class Player {
         return this.coins = random.nextInt(1) + 14;
     }
 
-    int decreaseCoins(){
-        return this.coins-=2;
+    int decreaseCoins(int coins){
+        return this.coins-=coins;
     }
 
     int getCoins(){
