@@ -13,10 +13,6 @@ public class Player {
     Player(){
     }
 
-    int setCoins(){
-        return this.coins = random.nextInt(1) + 14;
-    }
-
     int decreaseCoins(int coins){
         return this.coins-=coins;
     }
