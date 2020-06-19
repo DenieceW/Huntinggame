@@ -16,7 +16,7 @@ public class Player {
         return this.HP +=this.potion;
     }
     int potionHP(){
-        return this.potion = random.nextInt(15);
+        return this.potion = random.nextInt(10) + 20;
     }
 
     int resetPotion(){
@@ -35,8 +35,16 @@ public class Player {
        return this.damage;
     }
 
+    void decreaseHP(int number){
+        this.HP-=number;
+    }
+
+
     @Override
     public String toString() {
+        if(this.HP <= 0){
+            return "You dead";
+        }else
         return "Your current HP is " + this.HP + " and your damagelevel is " + this.damage;
     }
 }

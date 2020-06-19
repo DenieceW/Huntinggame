@@ -11,7 +11,7 @@ public class HuntingGame {
     //wanneer setupenemy = banker, krijg dan 3 goudstukken als bonus.
     //speler heeft bij start maar 3 potions, moet afnemen wanneer speler een potion inneemt.
     //speler heeft goudstukken 10
-    //speler mag maar 1 keer aanvallen, daarna mag de vijand aanvallen.
+   
 
     void startHunting(){
         printGameRules();
@@ -22,9 +22,14 @@ public class HuntingGame {
             String playerInput = scanner.nextLine();
             if(playerInput.equals("1")){
                 attackEnemy();
-                if(enemy.getHP() < 0){
-                   setupEnemy();
+                if(enemy.getHP() < 0){ //if enemy's HP is less or equal to 0, a new enemy will appear
+                    setupEnemy();
+                }else
+                attackPlayer();
+                if(player.getHP() <=0){ //if player's HP is less or equal to 0, game over
+                    break;
                 }
+
             }
             if(playerInput.equals("2")){
                 flee();
@@ -103,6 +108,15 @@ public class HuntingGame {
         System.out.println("");
         enemy.decreaseHP(player.damage);
         System.out.println("******" + enemy + "******");
+    }
+
+    private void attackPlayer(){
+        System.out.println("");
+        System.out.println(enemy.getName() + " did a counterattack !");
+        System.out.println("");
+        player.decreaseHP(enemy.damage);
+        System.out.println("******" + player + "******");
+
     }
 
     private void takePotion(){

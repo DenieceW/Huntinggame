@@ -5,7 +5,7 @@ import java.util.Random;
 public class Enemy {
     private Random random = new Random();
     int HP;
-    int attackDamage;
+    int damage;
     String name;
 
     String setName(){ //creating a random enemy by using a random number between 1 and 4 and adding an enemy to that number.
@@ -27,7 +27,7 @@ public class Enemy {
     }
 
     int setAttackDamage(){
-       return this.attackDamage = (random.nextInt(10) + 40); //the damage of an enemy attack is always between 10 and 40
+       return this.damage = (random.nextInt(10) + 40); //the damage of an enemy attack is always between 10 and 40
     }
 
     int setHP(){
@@ -42,15 +42,15 @@ public class Enemy {
         return this.HP;
     }
 
-    int getAttackDamage(){
-        return this.attackDamage;
+    int getDamage(){
+        return this.damage;
     }
     @Override
     public String toString() {
         if(this.HP <= 0){
             return "You have defeated the " + this.name;
         }else
-        return "The current HP is of the " + this.name + " is " + this.HP + " and the damagelevel is " + this.attackDamage;
+        return "The current HP is of the " + this.name + " is " + this.HP + " and the damagelevel is " + this.damage;
     }
 
 
