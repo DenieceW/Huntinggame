@@ -8,13 +8,18 @@ public class Enemy {
     int attackDamage;
     String name;
 
-    String setName(){ //random een vijand creeren d.m.v een naam geven met behulp van een random nummer.
-         int number = random.nextInt(3) + 1;
+    String setName(){ //creating a random enemy by using a random number between 1 and 4 and adding an enemy to that number.
+         int number = random.nextInt(5) + 1;
          if(number == 1){
              return this.name = "Demon";
          }else if (number == 2){
              return this.name = "Assassin";
-         }else return this.name = "Hunter";
+         }else if(number == 3){
+             return this.name = "Dragon";
+         }else if(number == 4){
+             return this.name = "Merchant";
+         }else
+             return this.name = "Hunter";
     }
 
     String getName(){
@@ -22,11 +27,11 @@ public class Enemy {
     }
 
     int setAttackDamage(){
-       return this.attackDamage = (random.nextInt(40) + 60);
+       return this.attackDamage = (random.nextInt(10) + 40); //the damage of an enemy attack is always between 10 and 40
     }
 
     int setHP(){
-        return this.HP = (random.nextInt(60) + 80);
+        return this.HP = (random.nextInt(60) + 60); //HP of enemy is always between 60 and 120 hp.
     }
 
     void decreaseHP(int number){

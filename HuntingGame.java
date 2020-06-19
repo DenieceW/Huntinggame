@@ -6,12 +6,18 @@ public class HuntingGame {
     Scanner scanner = new Scanner(System.in);
     Player player = new Player();
     Enemy enemy = new Enemy();
+    //to do:
+    //wanneer setupenemy = merchant, krijg dan optie om een potion te kopen voor extra health, kost 2 goudstukken)
+    //wanneer setupenemy = banker, krijg dan 3 goudstukken als bonus.
+    //speler heeft bij start maar 3 potions, moet afnemen wanneer speler een potion inneemt.
+    //speler heeft goudstukken 10
+    //speler mag maar 1 keer aanvallen, daarna mag de vijand aanvallen.
 
     void startHunting(){
-       // printGameRules();
+        printGameRules();
         setupEnemy(); //setting up the HP, damagelevel and name of the first enemy
         while (true){
-            setStatsPlayer(); //setting up the HP and damagelevel of the player, changes each iteration
+            setStatsPlayer(); //setting up the HP and damagelevel of the player, changes each iteration in the while loop
             printOptionsPlayer();
             String playerInput = scanner.nextLine();
             if(playerInput.equals("1")){
@@ -66,9 +72,12 @@ public class HuntingGame {
         enemy.setHP();
         enemy.setName();
         System.out.println(" ");
-        System.out.println("Time for a new Enemy to defeat!");
-        System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
-        System.out.println("******" + enemy + "******");
+            if(!enemy.name.equals("Merchant")){
+                System.out.println("Time for a new Enemy to defeat!");
+                System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
+                System.out.println("******" + enemy + "******");
+            }else
+        System.out.println("You have encountered a Merchant. You can buy a potion for 2 coins");
     }
 
     private void flee(){

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Player {
     private Random random = new Random();
-    int HP = 150;
+    int HP = 100;
     int damage;
     private int potion;
 
@@ -23,8 +23,8 @@ public class Player {
         return this.potion = 0;
     }
 
-    int setDamageForce() { //random getal tot 60 waarbij de speler schade kan brengen aan vijand
-      return this.damage += random.nextInt(60);
+    int setDamageForce() { //
+      return this.damage += random.nextInt(10) + 40; //the players damage to an enemy's HP is always between 10 and 40;
     }
 
     int resetDamageForce(){
