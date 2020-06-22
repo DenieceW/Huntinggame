@@ -8,7 +8,7 @@ public class Enemy {
     int damage;
     String name;
 
-    String setName(){ //creating a random enemy by using a random number between 1 and 4 and adding an enemy to that number.
+    String setName(){ //creating a random enemy by using a random number between 1 and 8 and adding an enemy to that number.
          int number = random.nextInt(7) + 1;
          if(number == 1){
              return this.name = "Demon";
