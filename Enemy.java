@@ -9,15 +9,19 @@ public class Enemy {
     String name;
 
     String setName(){ //creating a random enemy by using a random number between 1 and 4 and adding an enemy to that number.
-         int number = random.nextInt(5) + 1;
+         int number = random.nextInt(7) + 1;
          if(number == 1){
              return this.name = "Demon";
          }else if (number == 2){
              return this.name = "Assassin";
          }else if(number == 3){
              return this.name = "Dragon";
-         }else if(number == 4){
+         }else if(number == 4) {
              return this.name = "Healer";
+         }else if(number == 5){
+             return this.name = "Banker";
+         }else if (number == 6){
+             return this.name = "Robber";
          }else
              return this.name = "Hunter";
     }

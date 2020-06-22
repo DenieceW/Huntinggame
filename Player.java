@@ -21,11 +21,20 @@ public class Player {
         return this.coins;
     }
 
-    int getHP(){ //check status van health van speler
-        return this.HP +=this.potion;
+    void increaseCoins(){
+        this.coins+= random.nextInt(5)+10;
+    }
+
+
+    void addPotionToHP(){ //check status van health van speler
+        this.HP +=this.potion;
     }
     int potionHP(){
         return this.potion = random.nextInt(10) + 20;
+    }
+
+    int getHP(){
+        return this.HP;
     }
 
     int resetPotion(){

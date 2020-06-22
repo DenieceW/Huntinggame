@@ -7,7 +7,7 @@ public class HuntingGame {
     Player player = new Player();
     Enemy enemy = new Enemy();
     int maxPotions = 0;
-    
+
     void startHunting(){
         printGameRules();
         setupEnemy(); //setting up the HP, damagelevel and name of the first enemy
@@ -29,7 +29,7 @@ public class HuntingGame {
                 flee();
             }
             if(playerInput.equals("3")){
-                if(maxPotions >= 3){
+                if(maxPotions > 3){
                     System.out.println("You're all out of potions, you have to wait for a Healer to stop by or buy a potion from a Merchant!");
                 }else
                     takePotion();
@@ -38,7 +38,7 @@ public class HuntingGame {
                 buyPotion();
             }
             if(playerInput.equals("x")){
-                System.out.println("Your current HP is " + player.HP + " and your damagelevel is " + player.getDamage() +
+                System.out.println("Your current HP is " + player.getHP() + " and your damagelevel is " + player.getDamage() +
                         ". You have " + player.getCoins() + " coins left");
             }
             if(playerInput.equals("q")){
@@ -80,13 +80,23 @@ public class HuntingGame {
         enemy.setHP();
         enemy.setName();
         System.out.println(" ");
-        if(!enemy.name.equals("Healer")){
-            System.out.println("Time for a new Enemy to defeat!");
-            System.out.println("You have encountered a " + enemy.getName() + ". What will you do?");
-            System.out.println("******" + enemy + "******");
-        }else
-            getPotion();
+        switch (enemy.name) {
+            case "Healer":
+                getPotion();
+                break;
+            case "Banker":
+                increaseCoins();
+                break;
+            case "Robber":
+                getRobbed();
 
+                break;
+            default:
+                System.out.println("Time for a new Enemy to defeat!" +
+                        "\n" + "You have encountered a " + enemy.getName() + ". What will you do?" +
+                        "\n*****" + enemy + "*****");
+                break;
+        }
     }
 
     private void flee(){
@@ -125,6 +135,7 @@ public class HuntingGame {
 
     private void takePotion(){
         System.out.println("You took a potion of " + player.potionHP() + " HP.");
+        player.addPotionToHP();
         System.out.println("Your health is now " + player.getHP());
         maxPotions++; //if maxpotions = 3, the player cannot access this method anymore.
     }
@@ -135,12 +146,25 @@ public class HuntingGame {
         }else if (player.getCoins() > 0) {
             player.decreaseCoins(2); //amount of coins decreases by 2;
             System.out.println("You have encountered a Merchant and bought a potion for 2 coins of " + player.potionHP() + " HP.");
+            player.addPotionToHP();
             System.out.println("Your health is now " + player.getHP() + " and you have " + player.getCoins() + " coins left");
         }
     }
 
     private void getPotion(){
         System.out.println("You have encountered a Healer and got a potion of " + player.potionHP() + " HP.");
+        player.addPotionToHP();
         System.out.println("Your health is now " + player.getHP() +" and you have " + player.getCoins() + " coins left" );
+    }
+
+    private void increaseCoins(){
+        System.out.println("You have encountered a Banker and your coins have increased!");
+        player.increaseCoins();
+        System.out.println("You now have " + player.getCoins() + " coins.");
+    }
+
+    private void getRobbed(){
+        System.out.println("You have encountered a Robber and have been robbed of all your coins");
+        player.coins = 0;
     }
 }
