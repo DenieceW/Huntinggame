@@ -56,12 +56,14 @@ public class HuntingGame {
         System.out.println("Some of them will be stronger than you, some will be weaker");
         System.out.println("It will be up to you if you will fight for your life, or flee");
         System.out.println("To see your current status of your health(HP), and Attackdamage, press 'x'");
-        System.out.println("When you confront the enemy, you have three choices:");
+        System.out.println("When you confront the enemy, you have 4 choices:");
         System.out.println("[1] You can choose to attack");
         System.out.println("[2] You can choose to run");
         System.out.println("[3] You can choose to take a potion, but beware, you only get 3");
         System.out.println("[4] You can choose to buy a potion, this will cost you 2 coins");
         System.out.println("You may encounter a Healer, they will give you a potion for free");
+        System.out.println("You may encounter a Banker, they will give a random number of coins");
+        System.out.println("You may encounter a Robber, they will rob you and you will lose all your coins");
         System.out.println("Good luck and may the Gods be in your favour, Let the Hunting Games begin!");
         System.out.println("**************************************************************************");
     }
