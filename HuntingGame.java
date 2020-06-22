@@ -55,7 +55,7 @@ public class HuntingGame {
         System.out.println("During this game you will confront various enemies");
         System.out.println("Some of them will be stronger than you, some will be weaker");
         System.out.println("It will be up to you if you will fight for your life, or flee");
-        System.out.println("To see your current status of your health(HP), and Attackdamage, press 'x'");
+        System.out.println("To see your current status of your health(HP), and damagelevel, press 'x'");
         System.out.println("When you confront the enemy, you have 4 choices:");
         System.out.println("[1] You can choose to attack");
         System.out.println("[2] You can choose to run");
