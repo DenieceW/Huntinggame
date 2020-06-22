@@ -143,7 +143,7 @@ public class HuntingGame {
     }
 
     private void buyPotion(){
-        if(player.getCoins() <= 0){
+        if(player.getCoins() <= 1){
             System.out.println("You dont have enough coins!");
         }else if (player.getCoins() > 0) {
             player.decreaseCoins(2); //amount of coins decreases by 2;
